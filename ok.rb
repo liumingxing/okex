@@ -25,6 +25,17 @@ def ok_call(method, url, params)
     headers["x-simulated-trading"] = "1"
   end
 
+  # h = ""
+  # headers.each{|key, value|
+  #   h += %! -H "#{key}: #{value}"!
+  # }
+  
+  # command = %!curl -x #{$config["proxy"]} #{h} #{"https://www.okex.com" + url} !
+  # puts command
+  # result = `#{command}`
+  # p result
+  # return result
+
   RestClient.proxy = $config['proxy']
   
   res = RestClient::Request.execute(
