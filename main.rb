@@ -4,13 +4,11 @@ require 'yaml'
 #读取配置文件
 $config = YAML.load_file('./conf.yml')
 
-puts "获取当前服务器时间"
-ok_call("GET", "/api/general/v3/time", nil)
+mode = {"trend": "趋势", "grid": "网格"}[$config["mode"]]
+puts "请先配置模型：trend 或者 grid" and exit if !mode 
+puts "当前模型：#{mode}，间距：#{$config["distance"]}"
 
-puts "获取币币信息"
-ok_call("GET", "/api/v5/account/balance", nil)
-
-print "获得btc-usdt价格："
+print "btc-usdt价格："
 json = ok_call("GET", "/api/v5/market/ticker?instId=BTC-USDT-SWAP", nil)
 current_price = json["data"].first["last"].to_f
 puts current_price
