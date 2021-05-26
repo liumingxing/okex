@@ -1,5 +1,10 @@
 ok_access_key: "a5fbf136-cede-48b8-bb6c-c12b5b2754db"
 ok_access_secret: "F1C01DA3D390E32C0FEC7DAEF3BC0BA2"
 passphase: "330012"
+mode: "trend"     #trend | grid
+grid_step: 2
+distance: 600
+init_direction: "down"
+sz: 10
 proxy: "http://127.0.0.1:15236"
 simulate: 1
