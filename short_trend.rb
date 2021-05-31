@@ -34,7 +34,7 @@ while true
       new_direction = up > down ? "up" : "down"
       if new_direction != direction
         #下反向单
-        make_ok_order_s($config["sz"]*2)
+        make_ok_order_s(new_direction, $config["sz"]*2)
         price = get_current_price
         price_diff = price - current_price
         if direction == "up"
