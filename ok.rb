@@ -55,7 +55,7 @@ def ok_call(method, url, params)
 end
 
 #下单
-def make_ok_order(direction)
+def make_ok_order(direction, sz = $config["sz"])
   direction == "up" ? (puts "下多单") : (puts "下空单")
   params = {
     "instId": "BTC-USDT-SWAP",
@@ -63,9 +63,23 @@ def make_ok_order(direction)
     "side":    direction == "up" ?  "buy" : "sell",
     "ordType": "market",
     #"posSide": direction == "up" ? "long" : "short",
-    "sz": $config["sz"]
+    "sz": sz
   }
   puts ok_call("POST", "/api/v5/trade/order", params)
+end
+
+#下单
+def make_ok_order_s(direction, sz = $config["sz"])
+  direction == "up" ? (puts "下多单") : (puts "下空单")
+  params = {
+    "instId": "BTC-USDT-SWAP",
+    "tdMode": "cross",
+    "side":    direction == "up" ?  "buy" : "sell",
+    "ordType": "market",
+    #"posSide": direction == "up" ? "long" : "short",
+    "sz": sz
+  }
+  #puts ok_call("POST", "/api/v5/trade/order", params)
 end
 
 #平仓

@@ -37,7 +37,6 @@ while true
     puts err
   end
 
-  puts "当前价格：#{current_price}, [#{base_price - $config["distance"]} - #{base_price + $config["distance"]}]"
   if direction == "up"
     if current_price >= base_price + $config["distance"].to_f
       #平仓
