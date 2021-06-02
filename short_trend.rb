@@ -9,7 +9,7 @@ def get_current_price
 end
 
 #读取配置文件
-$config = YAML.load_file('./conf.yml')
+$config = YAML.load_file(ARGV[0])
 make_ok_order_s($config["init_direction"])
 direction = $config["init_direction"]
 current_price = get_current_price
@@ -36,6 +36,7 @@ while true
         #下反向单
         make_ok_order_s($config["sz"]*2)
         price_diff = get_current_price - current_price
+        current_price = get_current_price
         if direction == "up"
           profit += price_diff
         else
