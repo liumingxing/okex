@@ -37,7 +37,6 @@ while true
         new_direction = up > down ? "down" : "up"
       end
       if new_direction != direction
-        p "profit: #{profit} up:#{up}, down:#{down}"
         #下反向单
         make_ok_order_s(new_direction, $config["sz"]*2)
         price = get_current_price
@@ -49,6 +48,7 @@ while true
         end
         current_price = price
         direction = new_direction
+        p "profit: #{profit} up:#{up}, down:#{down}"
       end
     end
     sleep(20)
