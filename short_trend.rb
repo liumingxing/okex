@@ -29,10 +29,11 @@ while true
       end
     end
     max = [up, down].max
-    p "profit: #{profit} up:#{up}, down:#{down}"
+    #p "profit: #{profit} up:#{up}, down:#{down}"
     if max >= $config['short_trend_same']
       new_direction = up > down ? "up" : "down"
       if new_direction != direction
+        p "profit: #{profit} up:#{up}, down:#{down}"
         #下反向单
         make_ok_order_s(new_direction, $config["sz"]*2)
         price = get_current_price
