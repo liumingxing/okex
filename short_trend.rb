@@ -31,7 +31,11 @@ while true
     max = [up, down].max
     #p "profit: #{profit} up:#{up}, down:#{down}"
     if max >= $config['short_trend_same']
-      new_direction = up > down ? "up" : "down"
+      if $config["mode"] == "trend"  
+        new_direction = up > down ? "up" : "down"
+      elsif $config["mode"] == "grid"
+        new_direction = up > down ? "down" : "up"
+      end
       if new_direction != direction
         p "profit: #{profit} up:#{up}, down:#{down}"
         #下反向单
